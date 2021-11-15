@@ -51,7 +51,8 @@
 
 // label
 .zk-label {
+  @include nanumSquare;
+  font-weight: 700;
   font-size: 30px;
   color: $charcoal;
-  font-weight: 700;
 }

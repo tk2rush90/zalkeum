@@ -285,3 +285,11 @@
     @content;
   }
 }
+
+@mixin nanumBarunGothic {
+  font-family: 'NanumBarunGothic', sans-serif;
+}
+
+@mixin nanumSquare {
+  font-family: 'NanumSquare', sans-serif;
+}

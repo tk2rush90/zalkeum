@@ -31,7 +31,7 @@ export class HeaderComponent implements OnInit {
     {
       route: [],
       label: '잘큼',
-      hoverImage: '/assets/images/zalkeum-logo.png',
+      hoverImage: '/images/zalkeum-logo.png',
       backgroundColor: 'midnight-express',
       children: [
         {
@@ -63,7 +63,7 @@ export class HeaderComponent implements OnInit {
     {
       route: [],
       label: '잘큼센터',
-      hoverImage: '/assets/images/zalkeum-center-logo.png',
+      hoverImage: '/images/zalkeum-center-logo.png',
       backgroundColor: 'coffee',
       children: [
         {
@@ -91,7 +91,7 @@ export class HeaderComponent implements OnInit {
     {
       route: [],
       label: '키즈런',
-      hoverImage: '/assets/images/kids-run-logo.png',
+      hoverImage: '/images/kids-run-logo.png',
       backgroundColor: 'midnight-blue',
       children: [
         {

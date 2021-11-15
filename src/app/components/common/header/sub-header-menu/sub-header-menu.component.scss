@@ -5,10 +5,11 @@
 :host {
   @include padding(16px 90px 17px 89px);
   @include flex(center, center);
+  @include nanumSquare;
   border-radius: 34px;
   cursor: pointer;
   font-size: 25px;
-  font-weight: 700;
+  font-weight: 900;
   transition: background-color .15s;
   color: $charcoal;
 }
