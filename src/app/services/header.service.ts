@@ -4,6 +4,9 @@ import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {ParsingUtil} from '@tk-ui/utils/parsing.util';
+import {environment} from '../../environments/environment';
+
+const {baseUrl} = environment;
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +16,7 @@ export class HeaderService extends ApiBaseService {
   constructor(
     private http: HttpClient,
   ) {
-    super('/assets');
+    super('/assets', baseUrl);
   }
 
   /**
