@@ -26,7 +26,7 @@ export class HeaderService extends ApiBaseService {
   getImageAsBase64(url: string): Observable<any> {
     const extension = url.split('.').pop();
 
-    return this.http.get(url, { responseType: 'arraybuffer' })
+    return this.http.get(this.endpoint(url), { responseType: 'arraybuffer' })
       .pipe(map(res => {
         const url = ParsingUtil.arrayBufferToBase64(res);
 
