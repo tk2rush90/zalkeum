@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {HeaderMenuBackgroundColor} from './header-menu/header-menu.component';
 
 /**
@@ -132,5 +132,20 @@ export class HeaderComponent implements OnInit {
    */
   setHoveredMenu(menu: HeaderMenu): void {
     this.hoveredMenu = menu;
+  }
+
+  /**
+   * listener for mouseleave of host
+   */
+  @HostListener('mouseleave')
+  onHostMouseLeave(): void {
+    this._removeHoveredMenu();
+  }
+
+  /**
+   * remove hovered menu
+   */
+  private _removeHoveredMenu(): void {
+    this.hoveredMenu = undefined;
   }
 }
