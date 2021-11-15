@@ -1,0 +1,16 @@
+<!-- home button container -->
+<div class="zk-home-button-container">
+  <app-header-home></app-header-home>
+</div>
+
+<!-- menu container -->
+<div class="zk-header-menu-container">
+  <!-- render header menu -->
+  <app-header-menu
+    (mouseover)="emitHoverOnMenu(item)"
+    *ngFor="let item of menu"
+    [backgroundColor]="item.backgroundColor"
+    [hoverImage]="item.hoverImage"
+    [label]="item.label"
+    class="zk-header-menu"></app-header-menu>
+</div>

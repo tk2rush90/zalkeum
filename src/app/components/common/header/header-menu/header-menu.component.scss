@@ -1,0 +1,57 @@
+@import "mixins";
+@import "props";
+
+// container
+:host {
+  @include flex(center, center);
+  @include rect(451px, 102px);
+  cursor: pointer;
+  transition: background-color .15s;
+}
+
+// hover effect
+:host {
+  &:hover {
+    @include attribute-styles('background-color', 'midnight-express') {
+      background-color: $midnight-express;
+    }
+
+    @include attribute-styles('background-color', 'coffee') {
+      background-color: $coffee;
+    }
+
+    @include attribute-styles('background-color', 'midnight-blue') {
+      background-color: $midnight-blue;
+    }
+  }
+}
+
+// hover effect for children
+:host {
+  &:not(:hover) {
+    .zk-label {
+      display: block;
+    }
+
+    .zk-hover-image {
+      display: none;
+    }
+  }
+
+  &:hover {
+    .zk-label {
+      display: none;
+    }
+
+    .zk-hover-image {
+      display: block;
+    }
+  }
+}
+
+// label
+.zk-label {
+  font-size: 30px;
+  color: $charcoal;
+  font-weight: 700;
+}

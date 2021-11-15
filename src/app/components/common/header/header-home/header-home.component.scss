@@ -1,0 +1,24 @@
+@import "mixins";
+@import "props";
+
+:host {
+  cursor: pointer;
+}
+
+:host {
+  ::ng-deep {
+    path {
+      transition: fill .15s;
+    }
+  }
+}
+
+:host {
+  &:hover {
+    ::ng-deep {
+      path {
+        fill: $midnight-blue;
+      }
+    }
+  }
+}

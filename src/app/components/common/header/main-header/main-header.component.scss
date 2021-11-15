@@ -1,0 +1,40 @@
+@import "mixins";
+@import "props";
+
+// header root container
+:host {
+  @include flex(flex-end);
+  @include padding(21px 88px 0);
+  background-color: $white;
+}
+
+// container children item flex
+:host {
+  .zk-header-menu-container {
+    @include item-flex(1, 1, 0);
+  }
+}
+
+// home button container
+.zk-home-button-container {
+  @include flex(center, center);
+  @include rect(241px, 102px);
+}
+
+// common menu container
+.zk-header-menu-container {
+  @include flex();
+  margin-left: 109px;
+}
+
+// header menu item flex
+.zk-header-menu-container {
+  .zk-header-menu {
+    @include item-flex(1, 1, 0);
+  }
+}
+
+// header menu gap
+.zk-header-menu + .zk-header-menu {
+  margin-left: 20px;
+}
