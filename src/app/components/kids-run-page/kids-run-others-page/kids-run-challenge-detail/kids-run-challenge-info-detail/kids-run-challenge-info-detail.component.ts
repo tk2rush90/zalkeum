@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {InfoListItem} from '../../../../common/info-list-item/info-list-item.component';
+import {environment} from '../../../../../../environments/environment';
+
+const {
+  baseUrl,
+} = environment;
 
 @Component({
   selector: 'app-kids-run-challenge-info-detail',
@@ -7,6 +12,9 @@ import {InfoListItem} from '../../../../common/info-list-item/info-list-item.com
   styleUrls: ['./kids-run-challenge-info-detail.component.scss']
 })
 export class KidsRunChallengeInfoDetailComponent implements OnInit {
+  // image url
+  performanceSummaryImage = baseUrl + '/assets/images/kids-run-challenge/performance-summary.png';
+
   // data
   list: InfoListItem[][] = [
     [
