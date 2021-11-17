@@ -1,0 +1,26 @@
+<!-- square -->
+<div
+  [attr.zk-list-item-color]="data.color"
+  class="zk-square"></div>
+
+<!-- list contents -->
+<div class="zk-list-contents">
+  <!-- title -->
+  <div class="zk-list-title">
+    {{data.title}}
+  </div>
+
+  <!-- description -->
+  <div class="zk-list-description">
+    <!-- for multiline -->
+    <ng-container *ngIf="multiLine; else singleLine">
+      <p *ngFor="let item of descriptions">
+        {{item}}
+      </p>
+    </ng-container>
+
+    <ng-template #singleLine>
+      {{description}}
+    </ng-template>
+  </div>
+</div>

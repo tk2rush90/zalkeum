@@ -1,5 +1,12 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {HeaderChildMenu} from '../header.component';
+
+/**
+ * home sub header menu
+ */
+export interface SubHeaderMenu {
+  route: string | string[];
+  label: string;
+}
 
 @Component({
   selector: 'app-sub-header',
@@ -8,7 +15,7 @@ import {HeaderChildMenu} from '../header.component';
 })
 export class SubHeaderComponent implements OnInit {
   // header child menu
-  @Input() menu: HeaderChildMenu[] = [];
+  @Input() menu: SubHeaderMenu[] = [];
 
   constructor() { }
 

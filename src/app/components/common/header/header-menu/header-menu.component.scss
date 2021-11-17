@@ -11,16 +11,16 @@
 
 // hover effect
 :host {
-  &:hover {
-    @include attribute-styles('background-color', 'midnight-express') {
+  &.zk-active {
+    @include attribute-styles('zk-background-color', 'midnight-express') {
       background-color: $midnight-express;
     }
 
-    @include attribute-styles('background-color', 'coffee') {
+    @include attribute-styles('zk-background-color', 'coffee') {
       background-color: $coffee;
     }
 
-    @include attribute-styles('background-color', 'midnight-blue') {
+    @include attribute-styles('zk-background-color', 'midnight-blue') {
       background-color: $midnight-blue;
     }
   }
@@ -28,7 +28,7 @@
 
 // hover effect for children
 :host {
-  &:not(:hover) {
+  &:not(.zk-active) {
     .zk-label {
       display: block;
     }
@@ -38,7 +38,7 @@
     }
   }
 
-  &:hover {
+  &.zk-active {
     .zk-label {
       display: none;
     }

@@ -20,4 +20,4 @@ export class FlatButtonDirective {
 /**
  * button color type
  */
-export type FlatButtonColor = 'default';
+export type FlatButtonColor = 'default' | 'midnight-blue' | 'indigo' | 'periwinkle';

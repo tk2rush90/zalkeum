@@ -16,7 +16,7 @@
 
 // container hover
 :host {
-  &:hover {
+  &:hover, &.zk-active {
     text-shadow: 0 3px 6px rgba($black, .16);
     color: $white;
     background-color: $light-grey;

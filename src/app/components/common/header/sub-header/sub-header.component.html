@@ -1,5 +1,10 @@
-<!-- render child menu -->
-<app-sub-header-menu
-  *ngFor="let item of menu">
-  {{item.label}}
-</app-sub-header-menu>
+<!-- screen wrapper -->
+<div class="zk-screen-wrapper">
+  <!-- render child menu -->
+  <app-sub-header-menu
+    *ngFor="let item of menu"
+    [routerLink]="item.route"
+    routerLinkActive="zk-active">
+    {{item.label}}
+  </app-sub-header-menu>
+</div>

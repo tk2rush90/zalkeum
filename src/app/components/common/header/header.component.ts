@@ -1,37 +1,33 @@
 import {Component, HostListener, OnInit} from '@angular/core';
-import {HeaderMenuBackgroundColor} from './header-menu/header-menu.component';
-
-/**
- * home menu model
- */
-export interface HeaderMenu {
-  route: string | string[];
-  label: string;
-  hoverImage: string;
-  backgroundColor: HeaderMenuBackgroundColor;
-  children: HeaderChildMenu[];
-}
-
-/**
- * home child menu
- */
-export interface HeaderChildMenu {
-  route: string | string[];
-  label: string;
-}
+import {HeaderMenu} from './header-menu/header-menu.component';
+import {NavigationEnd, Router} from '@angular/router';
+import {ParsingUtil} from '@tk-ui/utils/parsing.util';
+import {SubscriptionService} from '@tk-ui/services/common/subscription.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
+  providers: [
+    SubscriptionService,
+  ],
 })
 export class HeaderComponent implements OnInit {
+  // url path prefix for each section
+  // zalkeum
+  readonly zalkeumPath = 'zalkeum';
+  // zalkeum center
+  readonly zalkeumCenterPath = 'zalkeum-center';
+  // kids run
+  readonly kidsRunPath = 'kids-run';
+
   // home menu
   menu: HeaderMenu[] = [
     {
-      route: [],
+      route: ['home'],
+      fragment: 'zalkeum',
       label: '잘큼',
-      hoverImage: '/images/zalkeum-logo.png',
+      hoverImage: '/images/logos/zalkeum-logo.png',
       backgroundColor: 'midnight-express',
       children: [
         {
@@ -61,9 +57,10 @@ export class HeaderComponent implements OnInit {
       ],
     },
     {
-      route: [],
+      route: ['home'],
+      fragment: 'zalkeum-center',
       label: '잘큼센터',
-      hoverImage: '/images/zalkeum-center-logo.png',
+      hoverImage: '/images/logos/zalkeum-center-logo.png',
       backgroundColor: 'coffee',
       children: [
         {
@@ -89,29 +86,30 @@ export class HeaderComponent implements OnInit {
       ],
     },
     {
-      route: [],
+      route: ['home'],
+      fragment: 'kids-run',
       label: '키즈런',
-      hoverImage: '/images/kids-run-logo.png',
+      hoverImage: '/images/logos/kids-run-logo.png',
       backgroundColor: 'midnight-blue',
       children: [
         {
-          route: [],
+          route: [this.kidsRunPath, 'play'],
           label: '플레이',
         },
         {
-          route: [],
+          route: [this.kidsRunPath, 'experience'],
           label: '체험',
         },
         {
-          route: [],
+          route: [this.kidsRunPath, 'edu'],
           label: '에듀',
         },
         {
-          route: [],
+          route: [this.kidsRunPath, 'care'],
           label: '케어',
         },
         {
-          route: [],
+          route: [this.kidsRunPath, 'others'],
           label: '기타',
         },
       ],
@@ -121,9 +119,64 @@ export class HeaderComponent implements OnInit {
   // hovered menu
   hoveredMenu?: HeaderMenu;
 
-  constructor() { }
+  // header menu which has opened child
+  private _childOpenedMenu?: HeaderMenu;
+
+  // child opened state
+  // check current url with readonly path prefixes
+  private _childOpened = false;
+
+  constructor(
+    private router: Router,
+    private subscriptionService: SubscriptionService,
+  ) { }
 
   ngOnInit(): void {
+    this._subscribeRouterEvent();
+  }
+
+  /**
+   * return prefixes
+   * should follow the order of navigation
+   */
+  get prefixes(): string[] {
+    return [
+      this.zalkeumPath,
+      this.zalkeumCenterPath,
+      this.kidsRunPath,
+    ];
+  }
+
+  /**
+   * subscribe router event
+   */
+  private _subscribeRouterEvent(): void {
+    const sub = this.router.events
+      .subscribe({
+        next: res => {
+          if (res instanceof NavigationEnd) {
+            this._checkCurrentUrl();
+          }
+        }
+      });
+
+    this.subscriptionService.store('_subscribeRouterEvent', sub);
+  }
+
+  /**
+   * check current url for detecting child route opened
+   */
+  private _checkCurrentUrl(): void {
+    const parsedUrl = ParsingUtil.parssPathUrl(this.router.url);
+    const index = this.prefixes.indexOf(parsedUrl.paths[0]);
+
+    if (index !== -1) {
+      this._childOpened = true;
+      this._childOpenedMenu = this.menu[index];
+      this.setHoveredMenu(this.menu[index]);
+    } else {
+      this._childOpened = false;
+    }
   }
 
   /**
@@ -139,7 +192,11 @@ export class HeaderComponent implements OnInit {
    */
   @HostListener('mouseleave')
   onHostMouseLeave(): void {
-    this._removeHoveredMenu();
+    if (this._childOpened) {
+      this._restoreChildOpenedMenu();
+    } else {
+      this._removeHoveredMenu();
+    }
   }
 
   /**
@@ -147,5 +204,12 @@ export class HeaderComponent implements OnInit {
    */
   private _removeHoveredMenu(): void {
     this.hoveredMenu = undefined;
+  }
+
+  /**
+   * restore child opened menu
+   */
+  private _restoreChildOpenedMenu(): void {
+    this.hoveredMenu = this._childOpenedMenu;
   }
 }

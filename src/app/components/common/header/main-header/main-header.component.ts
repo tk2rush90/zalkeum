@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {HeaderMenu} from '../header.component';
+import {HeaderMenu} from '../header-menu/header-menu.component';
 
 @Component({
   selector: 'app-main-header',
@@ -9,6 +9,9 @@ import {HeaderMenu} from '../header.component';
 export class MainHeaderComponent implements OnInit {
   // header menu
   @Input() menu: HeaderMenu[] = [];
+
+  // hovered menu
+  @Input() hoveredMenu?: HeaderMenu;
 
   // emitter for menu hover
   @Output() hoverOnMenu: EventEmitter<HeaderMenu> = new EventEmitter<HeaderMenu>();

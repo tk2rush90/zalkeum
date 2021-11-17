@@ -1,0 +1,27 @@
+@import "mixins";
+@import "props";
+
+// image container
+:host {
+  @include flex(stretch);
+  width: 1080px;
+}
+
+// thumbnail item flex
+:host {
+  .zk-image-thumbnail {
+    @include item-flex(1, 1, 0);
+  }
+}
+
+// thumbnail container
+.zk-image-thumbnail {
+  @include border(3px solid $white);
+  background-color: $white;
+  box-shadow: 0 3px 6px rgba($black, .16);
+}
+
+// image thumbnail space
+.zk-image-thumbnail + .zk-image-thumbnail {
+  margin-left: 15.7px;
+}

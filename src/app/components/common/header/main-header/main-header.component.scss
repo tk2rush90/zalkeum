@@ -1,15 +1,20 @@
 @import "mixins";
 @import "props";
 
-// header root container
+// container
 :host {
+  display: block;
+}
+
+// use screen wrapper as container
+.zk-screen-wrapper {
   @include flex(flex-end);
   @include padding(21px 88px 0);
   background-color: $white;
 }
 
 // container children item flex
-:host {
+.zk-screen-wrapper {
   .zk-header-menu-container {
     @include item-flex(1, 1, 0);
   }

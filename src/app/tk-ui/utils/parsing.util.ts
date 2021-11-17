@@ -1,5 +1,15 @@
 import {NumberLike} from '@tk-ui/others/types';
 
+export interface Queries {
+  [k: string]: string | string[];
+}
+
+export interface ParsedUrl {
+  paths: string[];
+  fragment: string;
+  queries: Queries;
+}
+
 export class ParsingUtil {
   /**
    * parse non integer to integer
@@ -80,5 +90,55 @@ export class ParsingUtil {
     }
 
     return btoa(binary);
+  }
+
+  /**
+   * parse path url to paths, queries, fragment
+   * @param url url
+   */
+  static parssPathUrl(url: string): ParsedUrl {
+    if (url.startsWith('/')) {
+      url = url.substring(1);
+    }
+
+    const [pathAndFragment = '', queryString = ''] = url.split('?') || [];
+    const [pathString = '', fragment = ''] = pathAndFragment.split('#');
+
+    return {
+      paths: pathString.split('/'),
+      queries: this.parseQueryString(queryString),
+      fragment,
+    };
+  }
+
+  /**
+   * parse query string to object
+   * @param queryString query string
+   */
+  static parseQueryString(queryString: string): Queries {
+    const queries: Queries = {};
+
+    queryString.split('&').forEach(query => {
+      let [name = '', value = ''] = query.split('=');
+
+      if (name) {
+        // for array values
+        if (name.endsWith('[]')) {
+          name = name.substring(0, name.length - 2);
+
+          if (!queries[name]) {
+            queries[name] = [];
+          }
+
+          if (value) {
+            (queries[name] as string[]).push(value);
+          }
+        } else {
+          queries[name] = value;
+        }
+      }
+    });
+
+    return queries;
   }
 }

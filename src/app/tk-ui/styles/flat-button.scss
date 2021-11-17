@@ -30,8 +30,20 @@
 // flat button
 .tk-flat-button {
   @include flex(center, center);
-  @include padding(0 20px);
+  @include nanumSquare;
+  border-radius: 200px;
+  transition: background-color .15s;
+  box-shadow: 0 3px 6px rgba($black, .16);
 
   // for grey color
   @include flat-button('default', $black, #E1E1E1, darken(#E1E1E1, 5%), darken(#E1E1E1, 10%));
+
+  // midnight blue
+  @include flat-button('midnight-blue', $white, $midnight-blue, $chetwode-blue, lighten($chetwode-blue, 5%));
+
+  // indigo
+  @include flat-button('indogio', $white, $indigo, $deep-lilac, lighten($deep-lilac, 5%));
+
+  // periwinkle
+  @include flat-button('periwinkle', $white, $periwinkle, $lavender, lighten($lavender, 5%));
 }

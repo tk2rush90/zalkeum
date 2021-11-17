@@ -1,0 +1,13 @@
+@import "mixins";
+@import "props";
+
+// container
+:host {
+  @include padding-top(77px + 45px);
+  display: block;
+}
+
+// main container
+.zk-main-container {
+  margin-top: 84px;
+}

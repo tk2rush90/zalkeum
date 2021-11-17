@@ -1,0 +1,12 @@
+@import "mixins";
+@import "props";
+
+// container
+:host {
+  display: block;
+}
+
+// info detail margin
+app-kids-run-challenge-info-detail {
+  margin-top: 53px;
+}

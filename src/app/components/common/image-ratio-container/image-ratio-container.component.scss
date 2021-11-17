@@ -1,0 +1,16 @@
+@import "mixins";
+@import "props";
+
+// container
+:host {
+  position: relative;
+  display: block;
+}
+
+// image
+.zk-image {
+  @include box(100%);
+  @include top-left;
+  position: absolute;
+  object-fit: cover;
+}

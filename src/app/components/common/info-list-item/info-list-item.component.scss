@@ -1,0 +1,49 @@
+@import "mixins";
+@import "props";
+
+// container
+:host {
+  @include flex(flex-start);
+}
+
+// left square
+.zk-square {
+  @include box(23px);
+  box-shadow: 0 3px 6px rgba($black, .16);
+}
+
+// colors for square
+.zk-square {
+  // primary
+  @include attribute-styles('zk-list-item-color', 'primary') {
+    background-color: $indigo;
+  }
+
+  // secondary
+  @include attribute-styles('zk-list-item-color', 'secondary') {
+    background-color: $midnight-blue2;
+  }
+}
+
+// list contents
+.zk-list-contents {
+  margin-left: 13px;
+}
+
+// list title
+.zk-list-title {
+  @include nanumBarunGothic;
+  font-size: 25px;
+  letter-spacing: -0.035em;
+  line-height: 28px;
+}
+
+// list description
+.zk-list-description {
+  @include nanumBarunGothic;
+  margin-top: 15px;
+  font-size: 22px;
+  line-height: 26px;
+  letter-spacing: -0.035em;
+  font-weight: 300;
+}

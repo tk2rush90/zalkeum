@@ -1,0 +1,23 @@
+<!-- inner container -->
+<div class="zk-inner-container">
+  <!-- performance image -->
+  <img
+    alt="Performance Summary"
+    class="zk-image"
+    src="/assets/images/kids-run-challenge/performance-summary.png">
+
+  <!-- info container -->
+  <div class="zk-info-container">
+    <!-- render rows -->
+    <div
+      *ngFor="let column of list"
+      class="zk-info-row">
+      <!-- render list item -->
+      <app-info-list-item
+        *ngFor="let item of column"
+        [data]="item"
+        class="zk-info-item"></app-info-list-item>
+    </div>
+  </div>
+</div>
+

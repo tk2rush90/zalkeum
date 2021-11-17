@@ -1,2 +1,9 @@
+@import "flat-button";
 @import "preset";
 @import "fonts";
+
+// screen wrapper
+.zk-screen-wrapper {
+  max-width: 1920px;
+  margin: 0 auto;
+}

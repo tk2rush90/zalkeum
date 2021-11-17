@@ -1,0 +1,46 @@
+@import "mixins";
+@import "props";
+
+// container
+:host {
+  @include flex(center, null, column);
+}
+
+// inner container
+.zk-inner-container {
+  width: 1020px;
+}
+
+// image
+.zk-image {
+  @include border(1px solid $dim-grey);
+  width: 100%;
+}
+
+// info container
+.zk-info-container {
+  margin-top: 53px;
+  width: 100%;
+}
+
+// row
+.zk-info-row {
+  @include flex(flex-start);
+}
+
+// info item item flex
+.zk-info-row {
+  .zk-info-item {
+    @include item-flex(1, 1, 0);
+  }
+}
+
+// info item space
+.zk-info-item + .zk-info-item{
+  margin-left: 17px;
+}
+
+// info row space
+.zk-info-row + .zk-info-row {
+  margin-top: 52px;
+}

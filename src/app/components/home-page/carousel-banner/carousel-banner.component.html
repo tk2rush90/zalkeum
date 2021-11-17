@@ -1,0 +1,9 @@
+<!-- carousel -->
+<app-carousel>
+  <!-- render images for carousel -->
+  <img
+    appCarouselContent
+    *ngFor="let item of carouselImages"
+    [alt]="item"
+    [src]="item" />
+</app-carousel>

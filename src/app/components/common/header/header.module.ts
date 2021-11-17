@@ -7,6 +7,7 @@ import { HeaderHomeComponent } from './header-home/header-home.component';
 import { SubHeaderMenuComponent } from './sub-header-menu/sub-header-menu.component';
 import {IconModule} from '@tk-ui/components/icon/icon.module';
 import { MainHeaderComponent } from './main-header/main-header.component';
+import {RouterModule} from '@angular/router';
 
 
 
@@ -24,7 +25,8 @@ import { MainHeaderComponent } from './main-header/main-header.component';
   ],
   imports: [
     CommonModule,
-    IconModule
+    IconModule,
+    RouterModule
   ]
 })
 export class HeaderModule { }

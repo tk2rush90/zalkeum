@@ -5,7 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:github": "ng build --output-path=docs --configuration=production --deploy-url=/zalkeum/ --base-href=/zalkeum",
+    "build:github": "ng build --output-path=docs --configuration=production-github --deploy-url=/zalkeum/ --base-href=/zalkeum",
+    "build:cafe24": "ng build --configuration=production-cafe24 && npm run build:copy",
+    "build:copy": "node build.cafe24.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

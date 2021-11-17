@@ -28,7 +28,8 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/404.html"
             ],
             "styles": [
               "src/styles.scss"
@@ -41,7 +42,7 @@
             "scripts": []
           },
           "configurations": {
-            "production": {
+            "production-github": {
               "budgets": [
                 {
                   "type": "initial",
@@ -57,7 +58,28 @@
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "with": "src/environments/environment.prod.github.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "production-cafe24": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.cafe24.ts"
                 }
               ],
               "outputHashing": "all"
@@ -76,8 +98,11 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
-            "production": {
-              "browserTarget": "zalkeum-frontend:build:production"
+            "production-github": {
+              "browserTarget": "zalkeum-frontend:build:production-github"
+            },
+            "production-cafe24": {
+              "browserTarget": "zalkeum-frontend:build:production-cafe24"
             },
             "development": {
               "browserTarget": "zalkeum-frontend:build:development"

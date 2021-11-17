@@ -1,0 +1,9 @@
+<!-- render tab buttons -->
+<button
+  (click)="emitTabChange(item.key)"
+  *ngFor="let item of tabButtons"
+  [color]="item.getColor(tab)"
+  appFlatButton
+  class="zk-tab-button">
+  {{item.label}}
+</button>

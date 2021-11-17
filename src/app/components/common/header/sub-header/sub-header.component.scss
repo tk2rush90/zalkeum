@@ -3,7 +3,12 @@
 
 // container
 :host {
+  display: block;
+  background-color: $white-smoke;
+}
+
+// use screen wrapper as container
+.zk-screen-wrapper {
   @include flex(center, space-evenly);
   height: 77px;
-  background-color: $white-smoke;
 }

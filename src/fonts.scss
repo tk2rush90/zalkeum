@@ -63,3 +63,16 @@
     font-display: swap;
 }
 
+@font-face {
+  font-family: 'NanumBarunGothic';
+  src: url('./assets/fonts/NanumBarunGothicLight.eot');
+  src: url('./assets/fonts/NanumBarunGothicLight.eot?#iefix') format('embedded-opentype'),
+  url('./assets/fonts/NanumBarunGothicLight.woff2') format('woff2'),
+  url('./assets/fonts/NanumBarunGothicLight.woff') format('woff'),
+  url('./assets/fonts/NanumBarunGothicLight.ttf') format('truetype'),
+  url('./assets/fonts/NanumBarunGothicLight.svg#NanumBarunGothicLight') format('svg');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
